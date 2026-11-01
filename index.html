@@ -39,7 +39,8 @@ h1 span{color:var(--teal)}
 .note{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.5}
 @media (max-width:900px){
  .grid{grid-template-columns:1fr}
- .chat{display:none}
+ .chat{height:65vh;min-height:360px}
+ .chat iframe{min-height:0}
  .btn.chatlink{display:inline-flex}
 }
 </style>
@@ -60,7 +61,7 @@ h1 span{color:var(--teal)}
 
  <div class="below">
   <a class="btn zoom" id="zoom" href="#" target="_blank" rel="noopener">🎥 Смотреть в Zoom</a>
-  <a class="btn chatlink" id="chatlink" href="#" target="_blank" rel="noopener">💬 Открыть чат</a>
+  <a class="btn chatlink" id="chatlink" href="#" target="_blank" rel="noopener">💬 Чат не открывается ? Открыть в YouTube</a>
  </div>
 
  <div class="offer" id="offer">
