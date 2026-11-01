@@ -14,7 +14,7 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-se
 .wrap{max-width:1320px;margin:0 auto;padding:20px 16px 40px}
 header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .brand{display:flex;align-items:center;gap:12px}
-.live{display:inline-flex;align-items:center;gap:8px;background:var(--brick);color:#fff;font-weight:800;font-size:13px;letter-spacing:2px;padding:7px 12px;border-radius:20px}
+.live{white-space:nowrap;flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--brick);color:#fff;font-weight:800;font-size:13px;letter-spacing:2px;padding:7px 12px;border-radius:20px}
 .live i{width:8px;height:8px;border-radius:50%;background:#fff;animation:p 1.4s infinite}
 @keyframes p{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.live i{animation:none}}
@@ -32,16 +32,50 @@ h1 span{color:var(--teal)}
 .btn.zoom{background:var(--card);color:var(--ink);border-color:var(--line)}
 .btn.chatlink{background:var(--card);color:var(--teal);border-color:var(--line);display:none}
 .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.offer{display:none;margin-top:16px;background:var(--teal);color:#fff;border-radius:20px;padding:20px 22px;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.offer.on{display:flex}
-.offer b{font-family:Unbounded,system-ui,sans-serif;font-size:20px}
-.offer .btn{background:var(--gold);color:var(--ink)}
+.offer{display:none;grid-column:1 / -1;position:relative;overflow:hidden;background:linear-gradient(135deg,#2f5d62 0%,#24474b 60%,#1d2a2c 100%);color:#fff;border-radius:22px;padding:26px 28px;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 24px 60px rgba(47,93,98,.35)}
+.offer.on{display:flex;animation:pop .7s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+.offer:before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(232,183,90,.16);right:-90px;top:-140px}
+.offer .ot{position:relative}
+.offer .tag{display:inline-block;background:var(--gold);color:var(--ink);font-weight:800;font-size:13px;letter-spacing:2px;padding:7px 12px;border-radius:20px}
+.offer b{display:block;font-family:Unbounded,system-ui,sans-serif;font-size:clamp(20px,2.4vw,28px);line-height:1.2;margin-top:12px}
+.offer .os{margin-top:8px;color:#cfe0dc;font-weight:700;font-size:15px;line-height:1.5}
+.offer .btn{position:relative;background:var(--gold);color:var(--ink);font-size:18px;padding:18px 26px;box-shadow:0 8px 0 #b98a35;animation:glow 2.2s ease-in-out infinite}
+.offer .btn:hover{transform:translateY(-1px)}
+@keyframes glow{50%{box-shadow:0 8px 0 #b98a35,0 0 0 8px rgba(232,183,90,.25)}}
+.sticky{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;background:var(--gold);color:var(--ink);font-weight:800;font-size:17px;text-align:center;padding:16px;border-radius:16px;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
+.cd{display:none;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:20px;padding:18px 22px;margin-bottom:16px}
+.cd.on{display:flex}
+.cd .cl{font-weight:800;font-size:15px;letter-spacing:1px}
+.cd .num{display:flex;gap:8px}
+.cd .u{min-width:64px;text-align:center;border-radius:12px;padding:8px 6px}
+.cd .u b{display:block;font-family:Unbounded,system-ui,sans-serif;font-weight:800;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums}
+.cd .u span{display:block;font-size:11px;font-weight:800;letter-spacing:1.5px;margin-top:3px;opacity:.75}
+#cdStart{background:var(--teal);color:#fff;box-shadow:0 16px 40px rgba(47,93,98,.22)}
+#cdStart .cl{font-size:17px}
+#cdStart .u{background:rgba(255,255,255,.12)}
+#cdStart .u b{color:var(--gold)}
+#cdOffer{grid-column:1 / -1;margin:0;background:var(--card);border:2px dashed var(--gold);color:var(--ink)}
+#cdOffer .cl{color:var(--teal)}
+#cdOffer .u{background:#fdf6e6}
+#cdOffer .u b{color:var(--ink);font-size:22px}
+.live.soon i{animation:none;opacity:.6}
+@media (prefers-reduced-motion:reduce){.offer.on,.offer .btn{animation:none}}
 .note{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.5}
 @media (max-width:900px){
  .grid{grid-template-columns:1fr}
  .chat{height:65vh;min-height:360px}
  .chat iframe{min-height:0}
  .btn.chatlink{display:inline-flex}
+ .player{order:1}.offer{order:2}.chat{order:3}#cdOffer{order:4}
+ .cd{padding:16px}
+ .cd .num{width:100%;justify-content:space-between}
+ .cd .u{flex:1;min-width:0}
+ .offer{padding:22px 20px}
+ .offer .btn{width:100%;justify-content:center}
+ body.offer-on .sticky{display:block}
+ body.offer-on .wrap{padding-bottom:96px}
 }
 </style>
 </head>
@@ -54,19 +88,33 @@ h1 span{color:var(--teal)}
   </div>
  </header>
 
+ <div class="cd" id="cdStart" aria-live="off">
+  <div class="cl">⏳ До начала эфира</div>
+  <div class="num" data-cd></div>
+ </div>
+
  <div class="grid">
   <div class="player"><iframe id="yt" title="Прямой эфир" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
   <div class="chat"><h2>ЧАТ ЭФИРА</h2><iframe id="chat" title="Чат эфира"></iframe></div>
+  <div class="offer" id="offer" aria-live="polite">
+   <div class="ot">
+    <span class="tag">🎉 ЗАПИСЬ ОТКРЫТА</span>
+    <b>Курс «Рынок недвижимости в Норвегии»</b>
+    <div class="os">Старт 16 ноября · лучшие условия - для участников эфира</div>
+   </div>
+   <a class="btn" id="buy" href="#" target="_blank" rel="noopener">Записаться на курс →</a>
+  </div>
+  <div class="cd" id="cdOffer" aria-live="off">
+   <div class="cl">🎁 До открытия записи на курс</div>
+   <div class="num" data-cd></div>
+  </div>
  </div>
+ <a class="sticky" id="sticky" href="#" target="_blank" rel="noopener">🎉 Записаться на курс</a>
+ <canvas id="confetti" aria-hidden="true"></canvas>
 
  <div class="below">
   <a class="btn zoom" id="zoom" href="#" target="_blank" rel="noopener">🎥 Смотреть в Zoom</a>
   <a class="btn chatlink" id="chatlink" href="#" target="_blank" rel="noopener">💬 Чтобы написать в чат - откройте эфир в YouTube</a>
- </div>
-
- <div class="offer" id="offer">
-  <div><b>Курс «Как купить своё жильё в Норвегии»</b><div style="margin-top:6px;opacity:.9">Цена для участников эфира - 72 часа</div></div>
-  <a class="btn" id="buy" href="#" target="_blank" rel="noopener">Записаться на курс</a>
  </div>
 
  <p class="note">Если видео не загружается, обновите страницу. Чтобы писать в чат, войдите в Google-аккаунт</p>
@@ -76,8 +124,12 @@ h1 span{color:var(--teal)}
 // ===== НАСТРОЙКИ =====
 var VIDEO_ID = 'zGjdKhKtxsE';   // ID трансляции YouTube (из ссылки youtube.com/live/XXXX)
 var ZOOM_URL = '';               // ссылка на Zoom (пусто = кнопка скрыта)
-var COURSE_URL = '';             // ссылка на оплату курса
-var SHOW_OFFER = false;          // true = показать блок курса
+var COURSE_URL = 'https://daria-norway.com/bolig/';  // ссылка на курс
+var SHOW_OFFER = false;          // true = показать блок курса сразу
+// Кнопка курса появится сама: 4 ноября 2026, 20:40 по Осло (= 19:40 UTC)
+var OFFER_AT = Date.UTC(2026, 10, 4, 19, 40);
+// Начало эфира: 4 ноября 2026, 19:00 по Осло (= 18:00 UTC)
+var START_AT = Date.UTC(2026, 10, 4, 18, 0);
 // =====================
 
 // быстрая подмена без правки файла: ?v=НОВЫЙ_ID и ?offer=1
@@ -92,7 +144,61 @@ document.getElementById('chatlink').href = 'https://www.youtube.com/watch?v=' + 
 
 var z = document.getElementById('zoom');
 if (ZOOM_URL) z.href = ZOOM_URL; else z.style.display = 'none';
-if (SHOW_OFFER && COURSE_URL) { document.getElementById('buy').href = COURSE_URL; document.getElementById('offer').classList.add('on'); }
+document.getElementById('buy').href = COURSE_URL;
+document.getElementById('sticky').href = COURSE_URL;
+
+var shown = false;
+function showOffer(withConfetti){
+  if (shown || !COURSE_URL) return;
+  shown = true;
+  document.getElementById('offer').classList.add('on');
+  document.body.classList.add('offer-on');
+  if (withConfetti) confetti();
+}
+function check(){ if (SHOW_OFFER || Date.now() >= OFFER_AT) showOffer(true); }
+
+var cdStart = document.getElementById('cdStart'), cdOffer = document.getElementById('cdOffer');
+var liveBadge = document.querySelector('.live');
+function pad(n){ return (n<10?'0':'') + n; }
+function paint(el, ms){
+  var t = Math.max(0, Math.floor(ms/1000));
+  var d = Math.floor(t/86400), h = Math.floor(t%86400/3600), m = Math.floor(t%3600/60), sec = t%60;
+  var parts = d > 0 ? [[d,'ДН'],[pad(h),'ЧАС'],[pad(m),'МИН'],[pad(sec),'СЕК']] : [[pad(h),'ЧАС'],[pad(m),'МИН'],[pad(sec),'СЕК']];
+  el.querySelector('[data-cd]').innerHTML = parts.map(function(p){ return '<div class="u"><b>'+p[0]+'</b><span>'+p[1]+'</span></div>'; }).join('');
+}
+function tick(){
+  var now = Date.now();
+  check();
+  if (now < START_AT) {
+    cdStart.classList.add('on'); cdOffer.classList.remove('on');
+    paint(cdStart, START_AT - now);
+    liveBadge.classList.add('soon'); liveBadge.lastChild.nodeValue = 'СКОРО ЭФИР';
+  } else if (!shown) {
+    cdStart.classList.remove('on'); cdOffer.classList.add('on');
+    paint(cdOffer, OFFER_AT - now);
+    liveBadge.classList.remove('soon'); liveBadge.lastChild.nodeValue = 'ЭФИР';
+  } else {
+    cdStart.classList.remove('on'); cdOffer.classList.remove('on');
+    liveBadge.classList.remove('soon'); liveBadge.lastChild.nodeValue = 'ЭФИР';
+  }
+}
+tick();
+setInterval(tick, 1000);
+
+function confetti(){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var c = document.getElementById('confetti'), x = c.getContext('2d');
+  var W = c.width = innerWidth, H = c.height = innerHeight;
+  var cols = ['#e8b75a','#2f5d62','#9a3b2e','#ffffff','#cfe0dc'];
+  var P = [];
+  for (var i=0;i<160;i++) P.push({x:Math.random()*W, y:-20-Math.random()*H*0.5, w:6+Math.random()*6, h:10+Math.random()*8, vy:2+Math.random()*3, vx:-1.5+Math.random()*3, r:Math.random()*6, vr:-.2+Math.random()*.4, c:cols[i%cols.length]});
+  var t0 = performance.now();
+  (function f(t){
+    x.clearRect(0,0,W,H);
+    P.forEach(function(p){ p.x+=p.vx; p.y+=p.vy; p.r+=p.vr; x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.fillStyle=p.c; x.fillRect(-p.w/2,-p.h/2,p.w,p.h); x.restore(); });
+    if (t - t0 < 4500) requestAnimationFrame(f); else x.clearRect(0,0,W,H);
+  })(t0);
+}
 </script>
 </body>
 </html>
