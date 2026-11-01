@@ -61,7 +61,7 @@ h1 span{color:var(--teal)}
 
  <div class="below">
   <a class="btn zoom" id="zoom" href="#" target="_blank" rel="noopener">🎥 Смотреть в Zoom</a>
-  <a class="btn chatlink" id="chatlink" href="#" target="_blank" rel="noopener">💬 Чат не открывается ? Открыть в YouTube</a>
+  <a class="btn chatlink" id="chatlink" href="#" target="_blank" rel="noopener">💬 Чтобы написать в чат - откройте эфир в YouTube</a>
  </div>
 
  <div class="offer" id="offer">
@@ -88,7 +88,7 @@ if (q.get('offer') === '1') SHOW_OFFER = true;
 var host = location.hostname || 'localhost';
 document.getElementById('yt').src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0&modestbranding=1';
 document.getElementById('chat').src = 'https://www.youtube.com/live_chat?v=' + VIDEO_ID + '&embed_domain=' + host;
-document.getElementById('chatlink').href = 'https://www.youtube.com/live_chat?v=' + VIDEO_ID;
+document.getElementById('chatlink').href = 'https://www.youtube.com/watch?v=' + VIDEO_ID;
 
 var z = document.getElementById('zoom');
 if (ZOOM_URL) z.href = ZOOM_URL; else z.style.display = 'none';
