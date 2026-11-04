@@ -83,7 +83,7 @@ h1 span{color:var(--teal)}
 <div class="wrap">
  <header>
   <div>
-   <div class="brand"><span class="live"><i></i>ЭФИР</span><span class="sub">4 ноября · 19:00 по Норвегии</span></div>
+   <div class="brand"><span class="live"><i></i>ЗАПИСЬ</span><span class="sub">Вебинар 4 ноября · смотрите в записи</span></div>
    <h1 style="margin-top:10px">Из аренды в своё : <span>как купить жильё в Норвегии</span></h1>
   </div>
  </header>
@@ -99,10 +99,15 @@ h1 span{color:var(--teal)}
   <div class="offer" id="offer" aria-live="polite">
    <div class="ot">
     <span class="tag">🎉 ЗАПИСЬ ОТКРЫТА</span>
-    <b>Курс «Рынок недвижимости в Норвегии»</b>
-    <div class="os">Старт 16 ноября · лучшие условия - для участников эфира</div>
+    <b>Курс «Как купить своё жильё в Норвегии»</b>
+    <div class="os">Старт 16 ноября · 1 540 kr для участников вебинара до 7 ноября (потом 1 940 kr) · рассрочка на 3 месяца · 3 месяца ответов Дарьи на ваши вопросы</div>
    </div>
    <a class="btn" id="buy" href="#" target="_blank" rel="noopener">Записаться на курс →</a>
+  </div>
+  <div style="grid-column:1/-1;background:#fff;border-radius:22px;padding:22px 24px;box-shadow:0 6px 24px rgba(0,0,0,.06)">
+   <div style="font-weight:800;letter-spacing:.12em;font-size:13px;color:#22484a;margin-bottom:12px">🎁 МАТЕРИАЛЫ ВЕБИНАРА</div>
+   <a href="https://drive.google.com/file/d/1fFxmasaHMhlpiY0Ri5V4SpjX2GXoksz3/view" target="_blank" rel="noopener" style="display:block;padding:14px 16px;border-radius:14px;background:#eef2f0;color:#22484a;font-weight:700;text-decoration:none;margin-bottom:10px">📄 Шаблон сопроводительного письма в Husbanken и банк →</a>
+   <a href="https://t.me/+FHHIGTc200k4ZTM6" target="_blank" rel="noopener" style="display:block;padding:14px 16px;border-radius:14px;background:#eef2f0;color:#22484a;font-weight:700;text-decoration:none">🎥 Запись вебинара о рефинансировании и все материалы - в Telegram-канале →</a>
   </div>
   <div class="cd" id="cdOffer" aria-live="off">
    <div class="cl">🎁 До открытия записи на курс</div>
@@ -125,7 +130,7 @@ h1 span{color:var(--teal)}
 var VIDEO_ID = 'jqJ3TzZGxA4';   // ID трансляции YouTube (из ссылки youtube.com/live/XXXX)
 var ZOOM_URL = '';               // ссылка на Zoom (пусто = кнопка скрыта)
 var COURSE_URL = 'https://daria-norway.com/bolig/';  // ссылка на курс
-var SHOW_OFFER = false;          // true = показать блок курса сразу
+var SHOW_OFFER = true;          // true = показать блок курса сразу
 // Кнопка курса появится сама: 4 ноября 2026, 20:55 по Осло (= 19:55 UTC)
 var OFFER_AT = Date.UTC(2026, 10, 4, 19, 55);
 // Начало эфира: 4 ноября 2026, 19:00 по Осло (= 18:00 UTC)
